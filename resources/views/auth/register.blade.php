@@ -1,4 +1,4 @@
-@extends('templates.auth')
+@extends('layouts.auth')
 
 @section('title') Register a new account @endsection
 

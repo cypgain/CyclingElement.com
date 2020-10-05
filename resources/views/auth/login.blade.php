@@ -1,4 +1,4 @@
-@extends('templates.auth')
+@extends('layouts.auth')
 
 @section('title') Sign into your account @endsection
 
