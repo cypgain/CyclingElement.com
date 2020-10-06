@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <ul class="profile-dropdown onhover-show-div">
-                        <li onclick="window.location.href = '{{ route('home') }}'"><i data-feather="user"></i><span>Account</span></li>
+                        <li onclick="window.location.href = '{{ route('profile') }}'"><i data-feather="user"></i><span>Account</span></li>
                         <li onclick="document.getElementById('logout-form').submit();"><i data-feather="log-in"> </i><span>Log out</span></li>
                     </ul>
                 </li>
