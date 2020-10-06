@@ -13,7 +13,7 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
-                    <form class="theme-form" method="POST" action="{{ route('profile.update_information') }}">
+                    <form class="theme-form" method="POST" action="{{ route('profile.update_information') }}" enctype="multipart/form-data">
                         @csrf
 
                         @if(Session::has('message_profile'))
@@ -44,6 +44,24 @@
                             </div>
 
                             @error('email')
+                                <span class="invalid-feedback d-block ml-3" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="avatar">Avatar</label>
+
+                            <div class="col-sm-1">
+                                <img class="b-r-10 avatar" src="{{ asset(Auth::user()->avatarPath()) }}" alt="Avatar" />
+                            </div>
+
+                            <div class="col-sm-8">
+                                <input type="file" class="form-control" id="avatar" name="avatar" />
+                            </div>
+
+                            @error('avatar')
                                 <span class="invalid-feedback d-block ml-3" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

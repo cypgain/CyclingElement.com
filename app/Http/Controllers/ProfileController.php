@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -18,24 +19,18 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        if ($request->email == $user->email)
+        $attributes = $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user)],
+            'avatar' => ['file'],
+        ]);
+
+        if (isset($request->avatar))
         {
-            $this->validate($request, [
-                'name' => ['required', 'string', 'max:255'],
-            ]);
-        }
-        else
-        {
-            $this->validate($request, [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            ]);
+            $attributes['avatar'] = $request->avatar->store('avatars');
         }
 
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save();
+        $user->update($attributes);
 
         return back()->with('message_profile', 'Your profile information has been updated successfully.');
     }

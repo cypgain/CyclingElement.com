@@ -11,7 +11,9 @@
                 <li><div class="mode"><i class="fa fa-moon-o"></i></div></li>
 
                 <li class="profile-nav onhover-dropdown p-0">
-                    <div class="media profile-media"><img class="b-r-10" src="{{ asset('assets/images/avatar/profile.jpg') }}" alt="">
+                    <div class="media profile-media">
+                        <img class="b-r-10 avatar" src="{{ asset(Auth::user()->avatarPath()) }}" alt="Avatar" />
+
                         <div class="media-body"><span>{{ Auth::user()->name }}</span>
                             <p class="mb-0 font-roboto text-capitalize">{{ Auth::user()->roles()->first()->name }} <i class="middle fa fa-angle-down"></i></p>
                         </div>

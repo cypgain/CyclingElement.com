@@ -5,3 +5,9 @@ body{font-size:14px;overflow-x:hidden;font-family:Rubik,sans-serif;color:#2b2b2b
 {
     height: 50px;
 }
+
+.avatar
+{
+    width: 37px;
+    height: 37px;
+}
