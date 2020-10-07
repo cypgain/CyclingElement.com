@@ -34,3 +34,5 @@ Route::post('ftp/add', 'FtpController@add')->name('ftp.add');
 
 Route::get('heartrate', 'HeartRateController@index')->name('heartrate');
 Route::post('heartrate/add', 'HeartRateController@add')->name('heartrate.add');
+
+Route::get('trainings', 'TrainingsController@index')->name('trainings');

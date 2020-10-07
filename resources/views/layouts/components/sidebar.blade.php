@@ -23,6 +23,8 @@
                         </div>
                     </li>
 
+                    <li class="dropdown"><a class="nav-link" href="{{ route('trainings') }}"><i data-feather="home"></i><span>Trainings</span></a></li>
+
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="bar-chart"></i><span>Datas</span></a>
                         <ul class="nav-submenu menu-content">
                             <li><a href="{{ route('weight') }}">Weight</a></li>
