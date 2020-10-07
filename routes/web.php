@@ -24,5 +24,7 @@ Route::get('profile', 'ProfileController@index')->name('profile');
 Route::post('profile/update/information', 'ProfileController@updateInformation')->name('profile.update_information');
 Route::post('profile/update/password', 'ProfileController@updatePassword')->name('profile.update_password');
 
-
 Route::get('home', 'HomeController@index')->name('home');
+
+Route::get('weight', 'WeightController@index')->name('weight');
+Route::post('weight/add', 'WeightController@add')->name('weight.add');
