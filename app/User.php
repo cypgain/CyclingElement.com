@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function avatarPath()
     {
-        return $this->avatar != 'default' ? 'storage/' . $this->avatar : 'assets/avatar/default_avatar.jpg';
+        return is_null($this->avatar) ? 'assets/images/default_avatar.jpg' : 'storage/' . $this->avatar;
     }
 
 }
