@@ -31,3 +31,6 @@ Route::post('weight/add', 'WeightController@add')->name('weight.add');
 
 Route::get('ftp', 'FtpController@index')->name('ftp');
 Route::post('ftp/add', 'FtpController@add')->name('ftp.add');
+
+Route::get('heartrate', 'HeartRateController@index')->name('heartrate');
+Route::post('heartrate/add', 'HeartRateController@add')->name('heartrate.add');
