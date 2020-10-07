@@ -28,3 +28,6 @@ Route::get('home', 'HomeController@index')->name('home');
 
 Route::get('weight', 'WeightController@index')->name('weight');
 Route::post('weight/add', 'WeightController@add')->name('weight.add');
+
+Route::get('ftp', 'FtpController@index')->name('ftp');
+Route::post('ftp/add', 'FtpController@add')->name('ftp.add');
