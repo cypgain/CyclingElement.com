@@ -36,3 +36,5 @@ Route::get('heartrate', 'HeartRateController@index')->name('heartrate');
 Route::post('heartrate/add', 'HeartRateController@add')->name('heartrate.add');
 
 Route::get('trainings', 'TrainingsController@index')->name('trainings');
+Route::post('trainings/add/normal', 'TrainingsController@addNormal')->name('trainings.add.normal');
+Route::post('trainings/add/recurrent', 'TrainingsController@addRecurrent')->name('trainings.add.recurrent');

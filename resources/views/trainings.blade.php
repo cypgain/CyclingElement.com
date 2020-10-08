@@ -14,6 +14,12 @@
 
                 <div class="clearfix"></div>
 
+                @if(Session::has('message'))
+                    <span class="valid-feedback d-block mb-3 mt-3" role="alert">
+                        <strong>{{ Session::get('message') }}</strong>
+                    </span>
+                @endif
+
                 <div class="tab-content mt-4" id="pills-icontabContent">
                     <div class="tab-pane fade show active" id="pills-planning" role="tabpanel" aria-labelledby="pills-planning-tab">
                         <div class="bg-primary p-25 b-r-5 mb-3">Aujourd'hui</div>
@@ -84,7 +90,9 @@
                     </div>
 
                     <div class="tab-pane fade" id="pills-add" role="tabpanel" aria-labelledby="pills-add-tab">
-                        <form class="theme-form" id="recurrence-date" method="post" action="">
+                        <form class="theme-form" id="recurrence-date" method="POST" action="{{ route('trainings.add.normal') }}">
+                            @csrf
+
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" id="name" class="form-control b-r-5 h-50px @error('name') is-invalid @enderror" placeholder="Training Name" value="{{ old('name') }}" required />
@@ -120,11 +128,17 @@
 
                             <div class="form-group">
                                 <label for="date">Date</label>
-                                <input class="form-control digits b-r-5 h-50px" type="date" value="2018-01-01" name="date" id="date" required />
+                                <input class="form-control digits b-r-5 h-50px" type="date" value="{{ $today }}" name="date" id="date" required />
+                            </div>
+
+                            <div class="form-group">
+                                <input class="btn btn-primary h-50px float-right" type="submit" value="Add" />
                             </div>
                         </form>
 
-                        <form class="theme-form" id="recurrence-start-end" method="post" action="">
+                        <form class="theme-form" id="recurrence-start-end" method="POST" action="{{ route('trainings.add.recurrent') }}">
+                            @csrf
+
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" id="name" class="form-control b-r-5 h-50px @error('name') is-invalid @enderror" placeholder="Training Name" value="{{ old('name') }}" required />
@@ -162,16 +176,20 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="start_date">Start date</label>
-                                        <input class="form-control digits b-r-5 h-50px" type="date" value="2018-01-01" name="start_date" id="start_date" required />
+                                        <input class="form-control digits b-r-5 h-50px" type="date" value="{{ $today }}" name="start_date" id="start_date" required />
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="end_date">End date</label>
-                                        <input class="form-control digits b-r-5 h-50px" type="date" value="2018-01-01" name="end_date" id="end_date" required />
+                                        <input class="form-control digits b-r-5 h-50px" type="date" value="{{ $today }}" name="end_date" id="end_date" required />
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="btn btn-primary h-50px float-right" type="submit" value="Add" />
                             </div>
                         </form>
                     </div>
