@@ -21,3 +21,8 @@ body{font-size:14px;overflow-x:hidden;font-family:Rubik,sans-serif;color:#2b2b2b
 {
     display: none;
 }
+
+body.dark-only .page-wrapper .page-body-wrapper
+{
+    background-color: #1d1e26;
+}
