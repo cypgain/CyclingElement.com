@@ -2,7 +2,8 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
+use Strava;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Permissions\HasPermissionsTrait;
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'avatar', 'email', 'password',
+        'name', 'avatar', 'email', 'password'
     ];
 
     /**
@@ -42,6 +43,40 @@ class User extends Authenticatable
     public function avatarPath()
     {
         return is_null($this->avatar) ? 'assets/images/default_avatar.jpg' : 'storage/' . $this->avatar;
+    }
+
+    public function getStravaToken()
+    {
+        $strava = StravaToken::where('user_id', '=', $this->id)->first();
+
+        if (is_null($strava)) return null;
+
+        if (time() > strtotime($strava->expires_at))
+        {
+            $token = Strava::refreshToken($strava->refresh_token);
+            $strava->access_token = $token->access_token;
+            $strava->refresh_token = $token->refresh_token;
+            $strava->expires_at = date('Y-m-d H:i:s', $token->expires_at);
+            $strava->save();
+        }
+
+        return $strava->access_token;
+    }
+
+    public function setStravaToken($accessToken, $refreshToken, $expiresAt)
+    {
+        $strava = StravaToken::where('user_id', '=', $this->id)->first();
+
+        if (is_null($strava))
+        {
+            $strava = new StravaToken;
+        }
+
+        $strava->user_id = $this->id;
+        $strava->access_token = $accessToken;
+        $strava->refresh_token = $refreshToken;
+        $strava->expires_at = date('Y-m-d H:i:s', $expiresAt);
+        $strava->save();
     }
 
 }

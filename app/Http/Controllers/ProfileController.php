@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use Strava;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -53,6 +54,27 @@ class ProfileController extends Controller
         {
             return back()->withErrors(['current_password' => 'Sorry, your current password was not recognised. Please try again.']);
         }
+    }
+
+    public function stravaLinkPost()
+    {
+        return Strava::authenticate($scope='read_all,profile:read_all,activity:read_all');
+    }
+
+    public function stravaLinkGet(Request $request)
+    {
+        if (isset($request->code))
+        {
+            $user = Auth::user();
+            $token = Strava::token($request->code);
+
+            if (isset($token->access_token) && isset($token->refresh_token))
+            {
+                $user->setStravaToken($token->access_token, $token->refresh_token, $token->expires_at);
+            }
+        }
+
+        return redirect('profile');
     }
 
     public function index()

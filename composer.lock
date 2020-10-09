@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99773a73d25ed317024a8b134395af40",
+    "content-hash": "9ad031e990c7e82d10220119dea1e93b",
     "packages": [
         {
             "name": "arielmejiadev/larapex-charts",
@@ -158,6 +158,53 @@
                 }
             ],
             "time": "2020-08-18T23:57:15+00:00"
+        },
+        {
+            "name": "codetoad/strava",
+            "version": "v1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RichieMcMullen/laravel-strava.git",
+                "reference": "43ffe18d75ab8e031d5e7b2358ed91702f6b7ed1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RichieMcMullen/laravel-strava/zipball/43ffe18d75ab8e031d5e7b2358ed91702f6b7ed1",
+                "reference": "43ffe18d75ab8e031d5e7b2358ed91702f6b7ed1",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3",
+                "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CodeToad\\Strava\\StravaServiceProvider"
+                    ],
+                    "aliases": {
+                        "Strava": "CodeToad\\Strava\\StravaFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CodeToad\\Strava\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Richie McMullen",
+                    "email": "richiemcmullen007@gmail.com"
+                }
+            ],
+            "description": "A laravel package to access data from the Strava API.",
+            "time": "2020-07-25T14:31:26+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

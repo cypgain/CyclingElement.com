@@ -23,6 +23,8 @@ Auth::routes();
 Route::get('profile', 'ProfileController@index')->name('profile');
 Route::post('profile/update/information', 'ProfileController@updateInformation')->name('profile.update_information');
 Route::post('profile/update/password', 'ProfileController@updatePassword')->name('profile.update_password');
+Route::post('profile/stravapost', 'ProfileController@stravaLinkPost')->name('profile.strava.post');
+Route::get('profile/stravaget', 'ProfileController@stravaLinkGet')->name('profile.strava.get');
 
 Route::get('home', 'HomeController@index')->name('home');
 

@@ -141,4 +141,35 @@
         </div>
 
     </div>
+
+    <hr class="mb-5" />
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <h3>Link Strava</h3>
+            <p>If you want to use activities feature, you need to link your Strava account.</p>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <form class="theme-form" method="POST" action="{{ route('profile.strava.post') }}">
+                        @csrf
+                        <input type="submit"
+                               class="btn bg-strava w-100"
+                               @if(is_null(Auth::user()->getStravaToken()))
+                                    value="Link your Strava account"
+                               @else
+                                    value="Strava account already linked"
+                               @endif
+                            
+                                @if(!(is_null(Auth::user()->getStravaToken()))) disabled @endif
+                        />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
 @endsection

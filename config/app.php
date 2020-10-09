@@ -177,6 +177,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\PermissionsServiceProvider::class,
 
+        CodeToad\Strava\StravaServiceProvider::class,
+
     ],
 
     /*
@@ -228,6 +230,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Strava' => CodeToad\Strava\StravaFacade::class,
 
     ],
 
