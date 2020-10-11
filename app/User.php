@@ -63,7 +63,14 @@ class User extends Authenticatable
         return $strava->access_token;
     }
 
-    public function setStravaToken($accessToken, $refreshToken, $expiresAt)
+    public function getStravaId()
+    {
+        $strava = StravaToken::where('user_id', '=', $this->id)->first();
+
+        return is_null($strava) ? null : $strava->strava_id;
+    }
+
+    public function setStravaToken($stravaId, $accessToken, $refreshToken, $expiresAt)
     {
         $strava = StravaToken::where('user_id', '=', $this->id)->first();
 
@@ -73,6 +80,7 @@ class User extends Authenticatable
         }
 
         $strava->user_id = $this->id;
+        $strava->strava_id = $stravaId;
         $strava->access_token = $accessToken;
         $strava->refresh_token = $refreshToken;
         $strava->expires_at = date('Y-m-d H:i:s', $expiresAt);

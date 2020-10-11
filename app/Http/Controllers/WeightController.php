@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use Strava;
 use App\Overrides\TimedApexChart;
 use App\Weight;
 use Illuminate\Http\Request;
@@ -16,6 +17,8 @@ class WeightController extends Controller
 
     public function index()
     {
+        dd(Strava::activity(Auth::user()->getStravaToken(), 4180937514));
+
         $datas = Weight::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 
         $series = [];

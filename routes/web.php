@@ -43,3 +43,6 @@ Route::post('trainings/add/recurrent', 'TrainingsController@addRecurrent')->name
 Route::get('training/{id}/done', 'TrainingsController@trainingDone')->name('training.done')->where('id', '[0-9]+');
 Route::get('training/{id}/notdone', 'TrainingsController@trainingNotDone')->name('training.notdone')->where('id', '[0-9]+');
 Route::get('training/{id}/delete', 'TrainingsController@deleteTraining')->name('training.delete')->where('id', '[0-9]+');
+
+Route::get('strava/event', 'StravaHookController@get');
+Route::post('strava/event', 'StravaHookController@post');

@@ -163,7 +163,7 @@
                                @else
                                     value="Strava account already linked"
                                @endif
-                            
+
                                 @if(!(is_null(Auth::user()->getStravaToken()))) disabled @endif
                         />
                     </form>

@@ -12,6 +12,7 @@ class StravaToken extends Model
 
     protected $fillable = [
         'user_id',
+        'strava_id',
         'access_token',
         'refresh_token',
         'expires_at',

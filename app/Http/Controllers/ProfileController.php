@@ -70,7 +70,7 @@ class ProfileController extends Controller
 
             if (isset($token->access_token) && isset($token->refresh_token))
             {
-                $user->setStravaToken($token->access_token, $token->refresh_token, $token->expires_at);
+                $user->setStravaToken($token->athlete->id ,$token->access_token, $token->refresh_token, $token->expires_at);
             }
         }
 

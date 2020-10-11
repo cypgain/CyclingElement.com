@@ -12,6 +12,7 @@ class CreateUsersStravaTokensTable extends Migration
         Schema::create('users_strava_tokens', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('strava_id');
             $table->string('access_token');
             $table->string('refresh_token');
             $table->dateTime('expires_at');
