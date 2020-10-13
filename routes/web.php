@@ -46,3 +46,5 @@ Route::get('training/{id}/delete', 'TrainingsController@deleteTraining')->name('
 
 Route::get('strava/event', 'StravaHookController@get');
 Route::post('strava/event', 'StravaHookController@post');
+
+Route::get('activities', 'ActivitiesController@index')->name('activities');

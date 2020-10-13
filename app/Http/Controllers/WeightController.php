@@ -17,8 +17,6 @@ class WeightController extends Controller
 
     public function index()
     {
-        dd(Strava::activity(Auth::user()->getStravaToken(), 4180937514));
-
         $datas = Weight::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 
         $series = [];
