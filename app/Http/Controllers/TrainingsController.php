@@ -144,7 +144,7 @@ class TrainingsController extends Controller
             return "Today";
         }
 
-        return date('l F Y', strtotime($date));
+        return date('l j F Y', strtotime($date));
     }
 
     private function getFirstDay($date, $day)
